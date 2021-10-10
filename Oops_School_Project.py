@@ -24,8 +24,12 @@ class Student():
 
 
 DES = School()
-
-stud1 = Student('Nupura',10)
-DES.admit_student(stud1)
+entry=0
+while entry < 3:
+    name = input('Enter name: ')
+    age = input('Enter age: ')
+    stud = Student(name, age)
+    DES.admit_student(stud)
+    entry+=1
 
 DES.display_student()
