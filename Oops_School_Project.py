@@ -1,29 +1,19 @@
 
 class School():
     def __init__(self):
-        self.__admission_limit = 0
+        self.__admission_limit = 20
+        self.__students = []
 
-    def admission_limit_reached (self):
-        if admission_limit > 50:
-            return "Admission full. No more seats available"
+    def admit_student(self,student):
+        self.__students.append(student)
+        print(self.__students[0].name)
+        print(self.__students[0].age)
 
 class Student():
-    def __init__(self, name, age, roll_number):
+    def __init__(self, name, age):
         self.name = name
         self.age = age
-        self.roll_number = roll_number
 
-    def student_details_entry(self):
-        self.__student_detail[int(self.roll_number)]=self.name
-        self.__age_list.append(self.age)
-        print(self.__student_detail)
-        print("Age: " + str(self.__age_list))
-
-entries = 0
-while entries <2:
-    name = input("Enter name: ")
-    age = input("Enter age: ")
-    roll = input("Enter roll number: ")
-    stud1 = Student(name,age,roll)
-    stud1.student_details_entry()
-    entries+=1
+DES = School()
+stud1 = Student('Nupura',10)
+DES.admit_student(stud1)
