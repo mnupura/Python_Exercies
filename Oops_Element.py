@@ -4,33 +4,38 @@ class Element():
 		self.__symbol = symbol
 		self.__number = number
 
-	def str(self):
+	def dump(self):
 		print('Values: '+ self.__name + ', ' + self.__symbol + ', '+ str(self.__number))
 
+	def __str__(self):
+		return ('String Values: '+ self.__name + ', ' + self.__symbol + ', '+ str(self.__number))
+
 	def get_name(self):
-		print('Name: '+ self.__name)
+		return ('Get Name: '+ self.__name)
 
 	def get_symbol(self):
-		print('Symbol: '+ self.__symbol)
+		return ('Get Symbol: '+ self.__symbol)
 
 	def get_number(self):
-		print('Number: '+ str(self.__number))
+		return ('Get Number: '+ str(self.__number))
  
 hydrogen = Element('Hydrogen','H',1)
 #hydrogen.dump()
 
+# Using dictionary
 dict_hydro = {'name':'Hydrogen',
 				'symbol': 'H',
 				'number': 1}
-
 hydrogen_dict = Element(**dict_hydro)	#named tupple
 #hydrogen_dict.dump()
 
+# Using __str__ method
 hydrogen_str = Element('Nitrogen','N',2)
 print(hydrogen_str)
-hydrogen_str.str()
-hydrogen_str.get_name()
-hydrogen_str.get_symbol()
-hydrogen_str.get_number()
+
+# Using getter methods
+print(hydrogen_str.get_name())
+print(hydrogen_str.get_symbol())
+print(hydrogen_str.get_number())
 
 
