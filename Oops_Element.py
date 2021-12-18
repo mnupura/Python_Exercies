@@ -11,13 +11,13 @@ class Element():
 		return ('String Values: '+ self.__name + ', ' + self.__symbol + ', '+ str(self.__number))
 
 	def get_name(self):
-		return ('Get Name: '+ self.__name)
+		return self.__name
 
 	def get_symbol(self):
-		return ('Get Symbol: '+ self.__symbol)
+		return self.__symbol
 
 	def get_number(self):
-		return ('Get Number: '+ str(self.__number))
+		return (str(self.__number))
  
 hydrogen = Element('Hydrogen','H',1)
 #hydrogen.dump()
@@ -34,8 +34,8 @@ hydrogen_str = Element('Nitrogen','N',2)
 print(hydrogen_str)
 
 # Using getter methods
-print(hydrogen_str.get_name())
-print(hydrogen_str.get_symbol())
-print(hydrogen_str.get_number())
+print('Get Name: '+hydrogen_str.get_name())
+print('Get Symbol: '+hydrogen_str.get_symbol())
+print('Get Number: '+hydrogen_str.get_number())
 
 
