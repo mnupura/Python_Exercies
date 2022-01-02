@@ -1,3 +1,5 @@
+import math
+
 class Line():
 	
 	def __init__(self,coord1,coord2):
@@ -7,7 +9,6 @@ class Line():
 		self.y2=coord2[1]
 
 	def distance(self):
-		import math
 		return (math.sqrt(((self.x2-self.x1)**2) + (self.y2-self.y1)**2))
 
 	def slope(self):
@@ -22,17 +23,17 @@ print('Distance: {}'.format(line1.distance()))
 #-------------------------------------------------------------------------
 
 class Cylinder():
-	pi = 3.14
+	PI = 3.14
 
 	def __init__(self,height,radius):
 		self.height=height
 		self.radius=radius
 
 	def volume(self):
-		return (self.pi * (self.radius**2) * self.height)
+		return (self.PI * (self.radius**2) * self.height)
 
 	def surface_area(self):
-		return ((2*self.pi * self.radius * self.height) + (2*self.pi * (self.radius**2)))
+		return ((2*self.PI * self.radius * self.height) + (2*self.PI * (self.radius**2)))
 
 height=10
 radius=5
