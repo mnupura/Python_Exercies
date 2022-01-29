@@ -33,14 +33,14 @@ class School():
         for stud in self.students: # variable name should not be shortform
             #change stud to student
             roll = stud.roll_number
-            score = ((roll + 50)/(len(self.students)))
+            score = ((roll+stud.age) + 50)/(len(self.students))
             School.result[roll] = [stud.name,score]
 
     def display_result(self):
         print('------------------------------------------------')
-        print('Roll Number'+ '  |  '+'Student Name'+'  |  '+'Score')
-        for x,y in School.result.items(): # what crap is x and y ????
-            print(str(x) + '            |  '+str(y[0])+'            |  '+str(y[1]))
+        print('Roll Number'+ '  |  '+'Student Name'+'     |  '+'Score')
+        for roll,name_score in School.result.items():
+            print(str(roll) + '            |  '+str(name_score[0])+'            |  '+str(name_score[1]))
         
 
 class Student():
@@ -53,16 +53,16 @@ class Student():
         self.roll_number = roll_number
 
     
-DES = School()
+#DES = School()
 
-while DES.is_admission_available():
-    name = input('Enter name: ')
-    age = input('Enter age: ')
-    stud = Student(name, age)
-    DES.admit_student(stud)
+#while DES.is_admission_available():
+ #   name = input('Enter name: ')
+ #   age = input('Enter age: ')
+ #   stud = Student(name, age)
+ #   DES.admit_student(stud)
 
 
-DES.display_student()
-DES.calculate_score()
-DES.display_result()
+#DES.display_student()
+#DES.calculate_score()
+#DES.display_result()
 
