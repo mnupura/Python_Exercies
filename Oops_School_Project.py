@@ -7,7 +7,7 @@ class School():
         self.students = []
 
     def admit_student(self, student):
-        if len(self.students) < School.ADMISSION_LIMIT: # replace with if self.is_admission_available()
+        if self.is_admission_available(): # replace with if self.is_admission_available()
             student.assign_roll_number(len(self.students)+1)
             self.students.append(student)
             return True
@@ -30,11 +30,10 @@ class School():
     def calculate_score(self):
         score = 0
         roll = 0
-        for stud in self.students: # variable name should not be shortform
-            #change stud to student
-            roll = stud.roll_number
-            score = ((roll+stud.age) + 50)/(len(self.students))
-            School.result[roll] = [stud.name,score]
+        for student in self.students: 
+            roll = student.roll_number
+            score = ((roll+student.age) + 50)/(len(self.students))
+            School.result[roll] = [student.name,score]
 
     def display_result(self):
         print('------------------------------------------------')

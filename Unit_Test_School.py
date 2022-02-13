@@ -71,6 +71,7 @@ class TestSchool(unittest.TestCase):
 #		expected_age = 15
 #		self.assertEqual(student1.name,expected_name,'Incorrect Name')
 #		self.assertEqual(student1.age,expected_age,'Incorrect Age')
+#		self.assertEqual(student1.roll_number,0,'Incorrect roll number')
 
 #	def test_student_assign_roll_number(self):
 #		student2 = Student('Python',20)
@@ -86,6 +87,10 @@ class Test_School(unittest.TestCase):
 		admission_done = school1.admit_student(student1)
 		self.assertTrue(admission_done)
 
+	def test_is_admission_available_return_True_when_no_students_admitted(self):
+		school = School()
+		self.assertTrue(school.is_admission_available())
+
 	def test_admit_student_admission_full(self):
 		school2 = School()
 		student2=Student('Stud2',2)
@@ -97,20 +102,10 @@ class Test_School(unittest.TestCase):
 		student4=Student('Stud4',4)
 		admission_status = school2.admit_student(student4)
 		self.assertTrue(admission_status)
-#		student5=Student('Stud5',5)
-#		admission_status = school2.admit_student(student5)
-#		self.assertTrue(admission_status)
+		student5=Student('Stud5',5)
+		admission_status = school2.admit_student(student5)
+		self.assertTrue(admission_status)
 		
-	def test_display_student_list(self):
-		school = School()
-		student1=Student('Stud1',11)
-		admission_status = school.admit_student(student1)
-		student2=Student('Stud2',12)
-		admission_status = school.admit_student(student2)
-		student3=Student('Stud3',13)
-		admission_status = school.admit_student(student3)
-		school.display_student()
-
 	def test_calculate_score(self):
 		school = School()
 		student1=Student('Stud1',40)
@@ -120,10 +115,9 @@ class Test_School(unittest.TestCase):
 		student3=Student('Stud3',60)
 		admission_status = school.admit_student(student3)
 		school.calculate_score()
-
-	def test_display_result(self):
-		school = School()
 		school.display_result()
+
+		
 
 if __name__=='__main__':
 	unittest.main()
