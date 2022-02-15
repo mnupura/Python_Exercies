@@ -81,6 +81,10 @@ class TestSchool(unittest.TestCase):
 
 class Test_School(unittest.TestCase):
 
+	def test_is_admission_available_should_return_True_when_no_students_admitted(self):
+		school = School()
+		self.assertTrue(school.is_admission_available())
+
 	def test_admit_student_admission_available(self):
 		student1=Student('Stud1',1)
 		school1 = School()
@@ -91,32 +95,38 @@ class Test_School(unittest.TestCase):
 		school = School()
 		self.assertTrue(school.is_admission_available())
 
-	def test_admit_student_admission_full(self):
+	def test_returns_true_when_student_admitted_successfully(self):
 		school2 = School()
 		student2=Student('Stud2',2)
 		admission_status = school2.admit_student(student2)
-		self.assertTrue(admission_status)	
+		self.assertTrue(admission_status)
+
+    def test_returns_false_when_adimmission_full(self):
+  		school2 = School()
+		student2=Student('Stud2',2)
+		school2.admit_student(student2)
 		student3=Student('Stud3',3)
-		admission_status = school2.admit_student(student3)
-		self.assertTrue(admission_status)
+		school2.admit_student(student3)
 		student4=Student('Stud4',4)
-		admission_status = school2.admit_student(student4)
-		self.assertTrue(admission_status)
+		school2.admit_student(student4)
+        # Student admitted after admission full
 		student5=Student('Stud5',5)
 		admission_status = school2.admit_student(student5)
-		self.assertTrue(admission_status)
-		
+		self.assertFalse(admission_status)
+        
 	def test_calculate_score(self):
 		school = School()
 		student1=Student('Stud1',40)
 		admission_status = school.admit_student(student1)
-		student2=Student('Stud2',50)
+        roll_1 = school.students[0].roll_number
+		expected_score_student1 = ((roll+student1.age) + 50)/(len(school.students))
+        student2=Student('Stud2',20)
 		admission_status = school.admit_student(student2)
-		student3=Student('Stud3',60)
-		admission_status = school.admit_student(student3)
+        roll_2 = school.students[1].roll_number
+		expected_score_student2 = ((roll+student2.age) + 50)/(len(school.students))
 		school.calculate_score()
-		school.display_result()
-
+		self.assertEqual(expected_score_student1, school.result[roll_1])
+        self.assertEqual(expected_score_student2, school.result[roll_2])
 		
 
 if __name__=='__main__':
